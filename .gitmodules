@@ -1,0 +1,3 @@
+[submodule "osd-bike-racks"]
+	path = osd-bike-racks
+	url = git://github.com/Chicago/osd-bike-racks.git
