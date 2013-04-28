@@ -28,7 +28,8 @@ function initialize(userPos, racks) {
         // uses first element in the passed rack array to center on for now
         center: userLatLng,
         zoom: 16,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+		streetViewControl: false
     };
     var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
     mapOptions.center = new google.maps.LatLng(racks[0].Latitude, racks[0].Longitude);
@@ -69,9 +70,6 @@ b.addEventListener('click', function(){
         xhr.send();
     });
 });
-
-
-
 
 </script>
 </html>
