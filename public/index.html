@@ -10,13 +10,14 @@
                     border: 1px solid #B3AAAD
                     }
     </style>
-
+<link rel="stylesheet" href="stylesheets/jquery.mobile-1.3.1.min.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWln2dRAZdaTj1VbGrbD-YEZ0_xLpwILw&sensor=false"></script>
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
 
 </head>
 <body>
-<input type="button" value="near here" id="test" />
 <div id="map-canvas" />
 <div id="list-container" />
 </body>
@@ -49,11 +50,14 @@ function initialize(userPos, racks) {
 
 }
 function drawListView(res){
+    var ul = $('<ul data-role="list-view">');
+
     for(var i =0, ii = res.length; i < ii; i++){
+        ul.append('<li>'+res[i].Address+'</li>');
     }
+    ul.appendTo(document.body);
 }
-var b = document.getElementById('test');
-b.addEventListener('click', function(){
+$(function(){
 
     navigator.geolocation.getCurrentPosition(function(pos){
 
