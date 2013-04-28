@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map-canvas { height: 200px;
+					width: 200px;
+					float: right;
+					margin-top: 30px;
+					margin-right: 10px;
+					border-style: solid;
+					border-color: #B3AAAD  }
+    </style>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWln2dRAZdaTj1VbGrbD-YEZ0_xLpwILw&sensor=false"></script>
+    <script type="text/javascript">
+		function ObjectId(id) {
+			return id;
+		}
+		var racks = [{ "Address" : "13401 S Avenue M M", "Community Area" : 55, "Community Name" : "Hegewisch", "F12" : 41.651633, "F13" : -87.537304, "Historical" : 1, "LOCATION" : "(41.651633, -87.537304)", "Latitude" : 41.651633, "Longitude" : -87.537304, "RackID" : 2102, "TotInstall" : 1, "Ward" : 10, "_id" : ObjectId("517c9151c37d2015a10e62c4"), "city" : "chicago", "loc" : [ -87.537304, 41.651633 ] },
+{ "Address" : "13700 S Brainard Ave", "Community Area" : 55, "Community Name" : "Hegewisch", "F12" : 41.645198, "F13" : -87.541845, "Historical" : 1, "LOCATION" : "(41.645198, -87.541845)", "Latitude" : 41.645198, "Longitude" : -87.541845, "RackID" : 2190, "TotInstall" : 1, "Ward" : 10, "_id" : ObjectId("517c9151c37d2015a10e62e5"), "city" : "chicago", "loc" : [ -87.541845, 41.645198 ] },
+{ "Address" : "13403 S Brandon Ave", "Community Area" : 55, "Community Name" : "Hegewisch", "F12" : 41.651613, "F13" : -87.545721, "Historical" : 1, "LOCATION" : "(41.651613, -87.545721)", "Latitude" : 41.651613, "Longitude" : -87.545721, "RackID" : 4739, "TotInstall" : 1, "Ward" : 10, "_id" : ObjectId("517c9151c37d2015a10e62c5"), "city" : "chicago", "loc" : [ -87.545721, 41.651613 ] },
+{ "Address" : "13338 S Brandon Ave", "Community Area" : 55, "Community Name" : "Hegewisch", "F12" : 41.652927, "F13" : -87.546085, "Historical" : 1, "LOCATION" : "(41.652927, -87.546085)", "Latitude" : 41.652927, "Longitude" : -87.546085, "RackID" : 4269, "TotInstall" : 1, "Ward" : 10, "_id" : ObjectId("517c9151c37d2015a10e62b3"), "city" : "chicago", "loc" : [ -87.546085, 41.652927 ] },
+{ "Address" : "13300 S Brandon Ave", "Community Area" : 55, "Community Name" : "Hegewisch", "F12" : 41.65349, "F13" : -87.546088, "Historical" : 1, "LOCATION" : "(41.653490, -87.546088)", "Latitude" : 41.65349, "Longitude" : -87.546088, "RackID" : 4257, "TotInstall" : 1, "Ward" : 10, "_id" : ObjectId("517c9151c37d2015a10e62a6"), "city" : "chicago", "loc" : [ -87.546088, 41.65349 ] } ];
+      function initialize() {
+        var mapOptions = {
+		// uses first element in the passed rack array to center on for now
+          center: new google.maps.LatLng(racks[0].Latitude, racks[0].Longitude),
+          zoom: 12,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+		mapOptions.center = new google.maps.LatLng(racks[0].Latitude, racks[0].Longitude);
+		var placeMarkers = function() {
+			for(var i=0;i<racks.length;i++) {
+				var marker = new google.maps.Marker({  position: new google.maps.LatLng(racks[i].Latitude, racks[i].Longitude),  map: map  });
+				console.log(racks[i].Latitude, racks[i].Longitude);
+			}
+		}
+		placeMarkers();
+      }
+	    google.maps.event.addDomListener(window, 'load', initialize);
+
+	function getStreetAddressFromLatLong(lat, long) {
+		Geocoder geocoder;
+			
+	}
+
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"/>
+  </body>
+</html>
