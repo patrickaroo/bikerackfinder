@@ -26,7 +26,6 @@ function initialize(userPos, racks) {
     var userLatLng = new google.maps.LatLng(userPos.coords.latitude, userPos.coords.longitude);
 
     var mapOptions = {
-        // uses first element in the passed rack array to center on for now
         center: userLatLng,
         zoom: 16,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
