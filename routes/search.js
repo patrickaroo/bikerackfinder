@@ -14,8 +14,8 @@ var BikeRack = mongoose.model('rack', BikeRackSchema);
 exports.byLoc = function(req, res){
     console.log(req.query.lat, req.query.lng);
     return BikeRack.find({
-            loc: { $nearSphere:[ req.query.lng, req.query.lat ]}
-            }).limit(10).execFind(function(err, rack){
+            loc: { $nearSphere:[ req.query.lng, req.query.lat ], $maxDistance: 100}
+            }).limit(5).execFind(function(err, rack){
             console.log('here', rack);
             res.send(rack);
     });
