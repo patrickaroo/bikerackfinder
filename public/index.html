@@ -31,6 +31,7 @@ function initialize(userPos, racks) {
         mapTypeId: google.maps.MapTypeId.ROADMAP,
 		streetViewControl: false
     };
+
     var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
     mapOptions.center = new google.maps.LatLng(racks[0].Latitude, racks[0].Longitude);
     var placeMarkers = function() {
@@ -39,6 +40,7 @@ function initialize(userPos, racks) {
             console.log(racks[i].Latitude, racks[i].Longitude);
         }
     }
+
     placeMarkers();
 
     var usrMarker = new google.maps.Marker({
@@ -48,6 +50,7 @@ function initialize(userPos, racks) {
     });
 
 }
+
 function drawListView(res){
     var ul = $('<ul data-role="list-view">');
 
@@ -56,6 +59,7 @@ function drawListView(res){
     }
     ul.appendTo(document.body);
 }
+
 $(function(){
 
     navigator.geolocation.getCurrentPosition(function(pos){
