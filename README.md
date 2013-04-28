@@ -1,4 +1,4 @@
 bikerackfinder
 ==============
 
-A framework for creating apps for finding back racks in a community
+Find bike racks near you or an address.
