@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+       * { box-sizing: border-box; }
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map-canvas { height: 150px;
+                    margin-top: 30px;
+                    border: 1px solid #B3AAAD
+                    }
+    </style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWln2dRAZdaTj1VbGrbD-YEZ0_xLpwILw&sensor=false"></script>
+
+</head>
+<body>
+<input type="button" value="near here" id="test" />
+<div id="map-canvas" />
+<div id="list-container" />
+</body>
+<script type="text/javascript">
+function initialize(userPos, racks) {
+    var userLatLng = new google.maps.LatLng(userPos.coords.latitude, userPos.coords.longitude);
+
+    var mapOptions = {
+        // uses first element in the passed rack array to center on for now
+        center: userLatLng,
+        zoom: 16,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+    mapOptions.center = new google.maps.LatLng(racks[0].Latitude, racks[0].Longitude);
+    var placeMarkers = function() {
+        for(var i=0;i<racks.length;i++) {
+            var marker = new google.maps.Marker({  position: new google.maps.LatLng(racks[i].Latitude, racks[i].Longitude),  map: map  });
+            console.log(racks[i].Latitude, racks[i].Longitude);
+        }
+    }
+    placeMarkers();
+
+    var usrMarker = new google.maps.Marker({
+        position: userLatLng,
+        map: map,
+        icon: 'http://maps.google.com/mapfiles/arrow.png'
+    });
+
+}
+function drawListView(res){
+    for(var i =0, ii = res.length; i < ii; i++){
+    }
+}
+var b = document.getElementById('test');
+b.addEventListener('click', function(){
+
+    navigator.geolocation.getCurrentPosition(function(pos){
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/findRacksByLoc?lat='+pos.coords.latitude+'&lng='+pos.coords.longitude);
+        xhr.onload = function(){
+            console.log(this.responseText);
+
+            var res = JSON.parse(this.responseText);
+            initialize(pos, res);
+
+            drawListView(res);
+        };
+        xhr.send();
+    });
+});
+
+
+
+
+</script>
+</html>
