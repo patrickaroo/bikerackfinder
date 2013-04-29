@@ -5,8 +5,7 @@
        * { box-sizing: border-box; }
       html { height: 100% }
       body { height: 100%; margin: 0; padding: 0 }
-      #map-canvas { height: 150px;
-                    margin-top: 30px;
+      #map-canvas { height: 200px;
                     border: 1px solid #B3AAAD
                     }
     </style>
@@ -18,8 +17,12 @@
 
 </head>
 <body>
+<div data-role="page">
+<div data-role="content">
 <div id="map-canvas" />
 <div id="list-container" />
+</div>
+</div>
 </body>
 <script type="text/javascript">
 function initialize(userPos, racks) {
@@ -50,12 +53,12 @@ function initialize(userPos, racks) {
 
 }
 function drawListView(res){
-    var ul = $('<ul data-role="list-view">');
+    var ul = $('<ul data-role="listview">');
 
     for(var i =0, ii = res.length; i < ii; i++){
         ul.append('<li>'+res[i].Address+'</li>');
     }
-    ul.appendTo(document.body);
+    $('#map-canvas').after(ul);
 }
 $(function(){
 
