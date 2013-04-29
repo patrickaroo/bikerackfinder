@@ -29,12 +29,12 @@ function initialize(userPos, racks) {
     var userLatLng = new google.maps.LatLng(userPos.coords.latitude, userPos.coords.longitude);
 
     var mapOptions = {
-        // uses first element in the passed rack array to center on for now
         center: userLatLng,
         zoom: 16,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
 		streetViewControl: false
     };
+
     var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
     mapOptions.center = new google.maps.LatLng(racks[0].Latitude, racks[0].Longitude);
     var placeMarkers = function() {
@@ -43,6 +43,7 @@ function initialize(userPos, racks) {
             console.log(racks[i].Latitude, racks[i].Longitude);
         }
     }
+
     placeMarkers();
 
     var usrMarker = new google.maps.Marker({
@@ -52,6 +53,7 @@ function initialize(userPos, racks) {
     });
 
 }
+
 function drawListView(res){
     var ul = $('<ul data-role="listview">');
 
@@ -60,6 +62,7 @@ function drawListView(res){
     }
     $('#map-canvas').after(ul);
 }
+
 $(function(){
 
     navigator.geolocation.getCurrentPosition(function(pos){
