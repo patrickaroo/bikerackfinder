@@ -6,7 +6,8 @@
       html { height: 100% }
       body { height: 100%; margin: 0; padding: 0 }
       #map-canvas { height: 200px;
-                    border: 1px solid #B3AAAD
+                    border: 1px solid #B3AAAD;
+                    margin: -15px -15px 15px -15px;
                     }
     </style>
 <link rel="stylesheet" href="stylesheets/jquery.mobile-1.3.1.min.css">
@@ -19,8 +20,9 @@
 <body>
 <div data-role="page">
 <div data-role="content">
-<div id="map-canvas" />
-<div id="list-container" />
+<div id="map-canvas"></div>
+<ul id="list-container" data-role="listview">
+</ul>
 </div>
 </div>
 </body>
@@ -55,12 +57,13 @@ function initialize(userPos, racks) {
 }
 
 function drawListView(res){
-    var ul = $('<ul data-role="listview">');
+    var ul = $('#list-container');
 
     for(var i =0, ii = res.length; i < ii; i++){
         ul.append('<li>'+res[i].Address+'</li>');
     }
     $('#map-canvas').after(ul);
+    ul.listview("refresh");
 }
 
 $(function(){
