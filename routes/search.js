@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 
+// define a schema to give Mongoose an idea of what we're looking for
 var BikeRackSchema = new mongoose.Schema({
         Address: String,
         Latitude: String,
@@ -9,6 +10,10 @@ var BikeRackSchema = new mongoose.Schema({
         collection: 'racks'
     }
 );
+
+// define an object that is going to represent one document
+// pass in a name and a schema
+// TO DO: double check parameters of model
 var BikeRack = mongoose.model('rack', BikeRackSchema);
 
 exports.byLoc = function(req, res){
@@ -19,6 +24,7 @@ exports.byLoc = function(req, res){
             res.send(rack);
     });
 };
+
 exports.byAddress = function(req, res){
     res.send('testing');
 };
