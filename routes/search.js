@@ -21,6 +21,7 @@ exports.byLoc = function(req, res){
     return BikeRack.find({
             loc: { $nearSphere:[ req.query.lng, req.query.lat ], $maxDistance: 100}
             }).limit(5).execFind(function(err, rack){
+            // TO DO: put error handler in
             res.send(rack);
     });
 };
