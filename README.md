@@ -8,8 +8,11 @@ For development:
 you will need...
 
 node
+
 mongodb
+
 npm (which might get installed with node by default)
+
 git
 
 you'll need to start your mongodb server...
