@@ -22,3 +22,6 @@ With node, we're using the Express, which is a web application framework.
 
 Express is good for allowing you to set up static HTTP requests, or allow for dynamic requests which can be dynamically changed with a combination of query string parameters and request types.
 
+We're using Mongoose as our ODM.  This will map documents in the db to objects in the javascript.
+
+
