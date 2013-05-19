@@ -1,25 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWln2dRAZdaTj1VbGrbD-YEZ0_xLpwILw&sensor=false"></script>
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
-<script type="text/javascript" src="js/app.js"></script>
 
-</head>
-<body>
-<div data-role="page">
-<div data-role="content">
-<div id="map-canvas"></div>
-<ul id="list-container" data-role="listview">
-</ul>
-</div>
-</div>
-</body>
-<script type="text/javascript">
 function initialize(userPos, racks) {
     var userLatLng = new google.maps.LatLng(userPos.coords.latitude, userPos.coords.longitude);
 
@@ -87,5 +66,3 @@ $(function(){
   ga('create', 'UA-38041063-2', 'amazonaws.com');
   ga('send', 'pageview');
 
-</script>
-</html>
