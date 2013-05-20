@@ -55,3 +55,18 @@ $(function(){
         xhr.send();
     });
 });
+
+// get lat and long by address from google
+var getGeoByAddress = function(address) {    
+    geocoder = new google.maps.Geocoder();
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+            console.log(results[0].geometry.location.jb, results[0].geometry.location.kb);
+    var LatLng = new google.maps.LatLng(results[0].geometry.location.jb, results[0].geometry.location.kb);
+            return LatLng;
+        }); 
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }   
+    }); 
+});
